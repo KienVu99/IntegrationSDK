@@ -22,6 +22,14 @@ public class AdManagerTests
         public void ShowAppOpen(string placement) => LastAppOpenPlacement = placement;
     }
 
+    private class ThrowingAdProvider : IAdProvider
+    {
+        public void Initialize(IntegrationSDKConfig config) => throw new Exception("boom");
+        public void ShowInterstitial(string placement) => throw new Exception("boom");
+        public void ShowRewarded(string placement, Action onRewardEarned) => throw new Exception("boom");
+        public void ShowAppOpen(string placement) => throw new Exception("boom");
+    }
+
     [SetUp]
     public void SetUp() => AdManager.ResetForTests();
 
@@ -71,5 +79,13 @@ public class AdManagerTests
 
         Assert.IsNull(providerA.LastAppOpenPlacement);
         Assert.AreEqual("loading_home", providerB.LastAppOpenPlacement);
+    }
+
+    [Test]
+    public void ShowInterstitial_DoesNotThrow_WhenProviderThrows()
+    {
+        AdManager.RegisterProvider(new ThrowingAdProvider());
+
+        Assert.DoesNotThrow(() => AdManager.ShowInterstitial("x"));
     }
 }

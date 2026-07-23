@@ -27,7 +27,7 @@ namespace IntegrationSDK.Core
                 return;
             }
 
-            _provider.Initialize(config);
+            SafeInvoke(() => _provider.Initialize(config));
         }
 
         public static void ShowInterstitial(string placement)
@@ -37,7 +37,7 @@ namespace IntegrationSDK.Core
                 return;
             }
 
-            _provider.ShowInterstitial(placement);
+            SafeInvoke(() => _provider.ShowInterstitial(placement));
         }
 
         public static void ShowRewarded(string placement, Action onRewardEarned)
@@ -47,7 +47,7 @@ namespace IntegrationSDK.Core
                 return;
             }
 
-            _provider.ShowRewarded(placement, onRewardEarned);
+            SafeInvoke(() => _provider.ShowRewarded(placement, onRewardEarned));
         }
 
         public static void ShowAppOpen(string placement)
@@ -57,7 +57,7 @@ namespace IntegrationSDK.Core
                 return;
             }
 
-            _provider.ShowAppOpen(placement);
+            SafeInvoke(() => _provider.ShowAppOpen(placement));
         }
 
         internal static void ResetForTests()
@@ -80,6 +80,18 @@ namespace IntegrationSDK.Core
             }
 
             return false;
+        }
+
+        private static void SafeInvoke(Action action)
+        {
+            try
+            {
+                action();
+            }
+            catch (Exception e)
+            {
+                Debug.LogWarning($"IntegrationSDK: ad provider threw an exception: {e}");
+            }
         }
     }
 }
