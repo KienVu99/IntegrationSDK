@@ -1,0 +1,8 @@
+{
+  "name": "com.gemmob.integrationsdk.core",
+  "version": "0.1.0",
+  "displayName": "Integration SDK - Core",
+  "description": "Dependency-free core: TrackingManager, AdManager, IntegrationSDKConfig. Integration packages (Ads.AppLovin, Tracking.AppsFlyer, Tracking.Firebase) plug into this without Core ever referencing them.",
+  "unity": "2021.3",
+  "dependencies": {}
+}
