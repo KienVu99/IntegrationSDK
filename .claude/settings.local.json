@@ -3,7 +3,18 @@
     "allow": [
       "WebSearch",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Read(//c/Users/kieng/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/**)",
+      "Read(//c/Users/kieng/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/**)",
+      "Bash(chmod +x \"C:/Users/kieng/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/task-brief\")",
+      "Bash(\"C:/Program Files/Git/bin/bash.exe\" \"C:/Users/kieng/.claude/plugins/cache/claude-plugins-official/superpowers/6.1.1/skills/subagent-driven-development/scripts/task-brief\" docs/superpowers/plans/2026-07-23-integration-sdk-implementation.md 1)",
+      "mcp__UnityMCP__run_tests",
+      "mcp__UnityMCP__get_test_job",
+      "mcp__UnityMCP__read_console",
+      "Bash(git commit *)",
+      "mcp__UnityMCP__refresh_unity",
+      "mcp__UnityMCP__execute_code",
+      "mcp__UnityMCP__unity_reflect"
     ]
   }
 }
