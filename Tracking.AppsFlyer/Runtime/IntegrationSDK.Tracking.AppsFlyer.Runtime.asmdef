@@ -1,0 +1,17 @@
+{
+    "name": "IntegrationSDK.Tracking.AppsFlyer.Runtime",
+    "rootNamespace": "IntegrationSDK.Tracking.AppsFlyer",
+    "references": [
+        "IntegrationSDK.Core.Runtime",
+        "AppsFlyer"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

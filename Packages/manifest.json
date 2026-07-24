@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "com.gemmob.integrationsdk.core": "file:../Core",
+    "com.gemmob.integrationsdk.tracking.appsflyer": "file:../Tracking.AppsFlyer",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
+    "appsflyer-unity-plugin": "https://github.com/AppsFlyerSDK/appsflyer-unity-plugin.git#upm",
+    "com.google.external-dependency-manager": "https://github.com/googlesamples/unity-jar-resolver.git?path=upm",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.ide.rider": "3.0.36",
     "com.unity.ide.visualstudio": "2.0.22",

@@ -1,0 +1,12 @@
+{
+  "name": "com.gemmob.integrationsdk.tracking.appsflyer",
+  "version": "0.1.0",
+  "displayName": "Integration SDK - AppsFlyer Tracking",
+  "description": "AppsFlyer ITrackingBackend implementation for IntegrationSDK.",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.gemmob.integrationsdk.core": "0.1.0",
+    "appsflyer-unity-plugin": "https://github.com/AppsFlyerSDK/appsflyer-unity-plugin.git#upm",
+    "com.google.external-dependency-manager": "https://github.com/googlesamples/unity-jar-resolver.git?path=upm"
+  }
+}
