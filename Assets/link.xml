@@ -1,0 +1,5 @@
+<linker>
+  <assembly fullname="IntegrationSDK.Core.Runtime" preserve="all" />
+  <assembly fullname="IntegrationSDK.Ads.AppLovin.Runtime" preserve="all" />
+  <assembly fullname="IntegrationSDK.Tracking.AppsFlyer.Runtime" preserve="all" />
+</linker>

@@ -14,25 +14,21 @@ namespace IntegrationSDK.Core.Editor
                 return errors;
             }
 
-            if (string.IsNullOrEmpty(config.maxSdkKey))
+            var usesAnyAdFormat =
+                !string.IsNullOrEmpty(config.androidInterstitialAdUnitId) || !string.IsNullOrEmpty(config.iosInterstitialAdUnitId) ||
+                !string.IsNullOrEmpty(config.androidRewardedAdUnitId) || !string.IsNullOrEmpty(config.iosRewardedAdUnitId) ||
+                !string.IsNullOrEmpty(config.androidAppOpenAdUnitId) || !string.IsNullOrEmpty(config.iosAppOpenAdUnitId) ||
+                !string.IsNullOrEmpty(config.androidBannerAdUnitId) || !string.IsNullOrEmpty(config.iosBannerAdUnitId);
+
+            if (usesAnyAdFormat && string.IsNullOrEmpty(config.maxSdkKey))
             {
                 errors.Add("AppLovin MAX SDK Key is missing.");
             }
 
-            if (string.IsNullOrEmpty(config.androidInterstitialAdUnitId) || string.IsNullOrEmpty(config.iosInterstitialAdUnitId))
-            {
-                errors.Add("Interstitial Ad Unit ID is missing for Android and/or iOS.");
-            }
-
-            if (string.IsNullOrEmpty(config.androidRewardedAdUnitId) || string.IsNullOrEmpty(config.iosRewardedAdUnitId))
-            {
-                errors.Add("Rewarded Ad Unit ID is missing for Android and/or iOS.");
-            }
-
-            if (string.IsNullOrEmpty(config.androidAppOpenAdUnitId) || string.IsNullOrEmpty(config.iosAppOpenAdUnitId))
-            {
-                errors.Add("App Open Ad Unit ID is missing for Android and/or iOS.");
-            }
+            ValidateAdFormat(config.androidInterstitialAdUnitId, config.iosInterstitialAdUnitId, "Interstitial", errors);
+            ValidateAdFormat(config.androidRewardedAdUnitId, config.iosRewardedAdUnitId, "Rewarded", errors);
+            ValidateAdFormat(config.androidAppOpenAdUnitId, config.iosAppOpenAdUnitId, "App Open", errors);
+            ValidateAdFormat(config.androidBannerAdUnitId, config.iosBannerAdUnitId, "Banner", errors);
 
             if (config.appsFlyerEnabled && string.IsNullOrEmpty(config.appsFlyerDevKey))
             {
@@ -40,6 +36,17 @@ namespace IntegrationSDK.Core.Editor
             }
 
             return errors;
+        }
+
+        private static void ValidateAdFormat(string androidId, string iosId, string formatName, List<string> errors)
+        {
+            var hasAndroid = !string.IsNullOrEmpty(androidId);
+            var hasIos = !string.IsNullOrEmpty(iosId);
+
+            if (hasAndroid != hasIos)
+            {
+                errors.Add($"{formatName} Ad Unit ID is set for one platform but not the other (Android/iOS must both be set, or both left blank to disable this ad format).");
+            }
         }
     }
 }

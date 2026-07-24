@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "appsflyer-unity-plugin": {
+      "version": "https://github.com/AppsFlyerSDK/appsflyer-unity-plugin.git#upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "d26fcb5d8c7d0f6598764dc687154e967b167761"
+    },
     "com.coplaydev.unity-mcp": {
       "version": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
       "depth": 0,
@@ -17,11 +24,36 @@
       },
       "hash": "c14de1e6dc01ab42d2bb358730cff954bce0ce6b"
     },
+    "com.gemmob.integrationsdk.ads.applovin": {
+      "version": "file:../Ads.AppLovin",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.gemmob.integrationsdk.core": "0.1.0"
+      }
+    },
     "com.gemmob.integrationsdk.core": {
       "version": "file:../Core",
       "depth": 0,
       "source": "local",
       "dependencies": {}
+    },
+    "com.gemmob.integrationsdk.tracking.appsflyer": {
+      "version": "file:../Tracking.AppsFlyer",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {
+        "com.gemmob.integrationsdk.core": "0.1.0",
+        "appsflyer-unity-plugin": "https://github.com/AppsFlyerSDK/appsflyer-unity-plugin.git#upm",
+        "com.google.external-dependency-manager": "https://github.com/googlesamples/unity-jar-resolver.git?path=upm"
+      }
+    },
+    "com.google.external-dependency-manager": {
+      "version": "https://github.com/googlesamples/unity-jar-resolver.git?path=upm",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "32c34224fd3f34c813c97c69508d2a3930105dc7"
     },
     "com.unity.2d.animation": {
       "version": "9.2.0",

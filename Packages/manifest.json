@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "com.gemmob.integrationsdk.core": "file:../Core",
+    "com.gemmob.integrationsdk.ads.applovin": "file:../Ads.AppLovin",
     "com.gemmob.integrationsdk.tracking.appsflyer": "file:../Tracking.AppsFlyer",
     "com.coplaydev.unity-mcp": "https://github.com/CoplayDev/unity-mcp.git?path=/MCPForUnity#main",
     "appsflyer-unity-plugin": "https://github.com/AppsFlyerSDK/appsflyer-unity-plugin.git#upm",
@@ -44,8 +45,5 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
-  },
-  "testables": [
-    "com.gemmob.integrationsdk.core"
-  ]
+  }
 }

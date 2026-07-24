@@ -1,0 +1,17 @@
+{
+    "name": "IntegrationSDK.Ads.AppLovin.Runtime",
+    "rootNamespace": "IntegrationSDK.Ads.AppLovin",
+    "references": [
+        "IntegrationSDK.Core.Runtime",
+        "MaxSdk.Scripts"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -13,6 +13,8 @@ namespace IntegrationSDK.Core
         public string iosRewardedAdUnitId;
         public string androidAppOpenAdUnitId;
         public string iosAppOpenAdUnitId;
+        public string androidBannerAdUnitId;
+        public string iosBannerAdUnitId;
 
         [Header("AppsFlyer")]
         public bool appsFlyerEnabled;
@@ -34,5 +36,10 @@ namespace IntegrationSDK.Core
 
         public string GetAppOpenAdUnitIdForPlatform(RuntimePlatform platform) =>
             platform == RuntimePlatform.IPhonePlayer ? iosAppOpenAdUnitId : androidAppOpenAdUnitId;
+
+        public string GetBannerAdUnitId() => GetBannerAdUnitIdForPlatform(Application.platform);
+
+        public string GetBannerAdUnitIdForPlatform(RuntimePlatform platform) =>
+            platform == RuntimePlatform.IPhonePlayer ? iosBannerAdUnitId : androidBannerAdUnitId;
     }
 }

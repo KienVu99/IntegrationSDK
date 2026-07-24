@@ -60,6 +60,26 @@ namespace IntegrationSDK.Core
             SafeInvoke(() => _provider.ShowAppOpen(placement));
         }
 
+        public static void ShowBanner(string placement)
+        {
+            if (!WarnIfNoProvider())
+            {
+                return;
+            }
+
+            SafeInvoke(() => _provider.ShowBanner(placement));
+        }
+
+        public static void HideBanner()
+        {
+            if (!WarnIfNoProvider())
+            {
+                return;
+            }
+
+            SafeInvoke(() => _provider.HideBanner());
+        }
+
         internal static void ResetForTests()
         {
             _provider = null;

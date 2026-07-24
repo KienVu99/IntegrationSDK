@@ -5,7 +5,7 @@ namespace IntegrationSDK.Core
 {
     public static class Bootstrapper
     {
-        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void Init()
         {
             var config = Resources.FindObjectsOfTypeAll<IntegrationSDKConfig>().FirstOrDefault();

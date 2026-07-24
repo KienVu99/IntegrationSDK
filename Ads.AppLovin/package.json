@@ -1,0 +1,10 @@
+{
+  "name": "com.gemmob.integrationsdk.ads.applovin",
+  "version": "0.1.0",
+  "displayName": "Integration SDK - AppLovin MAX Ads",
+  "description": "AppLovin MAX IAdProvider implementation for IntegrationSDK. Requires the AppLovin MAX Unity Plugin to be installed separately via AppLovin's Integration Manager.",
+  "unity": "2021.3",
+  "dependencies": {
+    "com.gemmob.integrationsdk.core": "0.1.0"
+  }
+}
