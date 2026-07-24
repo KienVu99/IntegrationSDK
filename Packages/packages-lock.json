@@ -17,12 +17,6 @@
       },
       "hash": "c14de1e6dc01ab42d2bb358730cff954bce0ce6b"
     },
-    "com.gemmob.integrationsdk.core": {
-      "version": "file:../Core",
-      "depth": 0,
-      "source": "local",
-      "dependencies": {}
-    },
     "com.unity.2d.animation": {
       "version": "9.2.0",
       "depth": 1,

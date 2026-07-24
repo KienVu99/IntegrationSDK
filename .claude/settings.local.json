@@ -14,7 +14,8 @@
       "Bash(git commit *)",
       "mcp__UnityMCP__refresh_unity",
       "mcp__UnityMCP__execute_code",
-      "mcp__UnityMCP__unity_reflect"
+      "mcp__UnityMCP__unity_reflect",
+      "Bash(git push *)"
     ]
   }
 }
