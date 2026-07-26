@@ -377,7 +377,13 @@ namespace aCode.Advertisers
         
         public bool IsInterstitialAvailable()
         {
-            return !string.IsNullOrEmpty(_interstitialAdUnitId) && DateTime.Now > _timeAdsCanShow && _interstitialAd != null && _interstitialAd.CanShowAd();
+            if (string.IsNullOrEmpty(_interstitialAdUnitId)) return false;
+            if (DateTime.Now <= _timeAdsCanShow) return false;
+#if UNITY_EDITOR
+            return true;
+#else
+            return _interstitialAd != null && _interstitialAd.CanShowAd();
+#endif
         }
         
         public void ShowInterstitial(string placement, UnityAction callback)
@@ -387,8 +393,11 @@ namespace aCode.Advertisers
             {
                 GM.LogEvent("show_interstitial_ads", "placement", _currentInterstitialPlacement);
                 _onInterstitialClosedCallback = callback;
-                _interstitialAd.Show();
                 _timeAdsCanShow = DateTime.Now + _intervalShowAds;
+                if (_interstitialAd != null)
+                {
+                    _interstitialAd.Show();
+                }
             }
             else
             {
@@ -619,7 +628,12 @@ namespace aCode.Advertisers
 
         public bool IsRewardedVideoAvailable()
         {
+            if (string.IsNullOrEmpty(_rewardedAdUnitId)) return false;
+#if UNITY_EDITOR
+            return true;
+#else
             return _rewardedVideo != null && _rewardedVideo.CanShowAd();
+#endif
         }
         
         public void ShowRewardedVideo(string placement, UnityAction rewardVideoCallBack)
@@ -630,8 +644,11 @@ namespace aCode.Advertisers
                 GM.LogEvent("show_rewarded_ads", "placement", _currentRewardedPlacement);
                 _onRewardedVideoClosed = rewardVideoCallBack;
                 _rewardedVideoWatched = false;
-                _rewardedVideo.Show(RewardedVideoWatched);
                 _timeAdsCanShow = DateTime.Now + _intervalShowAds;
+                if (_rewardedVideo != null)
+                {
+                    _rewardedVideo.Show(RewardedVideoWatched);
+                }
             }
             else
             {

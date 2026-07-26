@@ -614,6 +614,22 @@ namespace aCode
         {
             LogEvent("level_passed", "level", level, "time_played", playTime);
         }
+
+        /// <summary>
+        /// Track level completed
+        /// </summary>
+        public static void LevelComplete(string level, int playTime)
+        {
+            LogEvent("level_passed", "level", level, "time_played", playTime);
+        }
+
+        /// <summary>
+        /// Track level completed
+        /// </summary>
+        public static void LevelComplete(string level, float playTime)
+        {
+            LogEvent("level_passed", "level", level, "time_played", playTime);
+        }
         
         /// <summary>
         /// Track level completed
@@ -635,6 +651,22 @@ namespace aCode
         /// Track level failed
         /// </summary>
         public static void LevelFail(string level, string playTime)
+        {
+            LogEvent("level_failed", "level", level, "time_played", playTime);
+        }
+
+        /// <summary>
+        /// Track level failed
+        /// </summary>
+        public static void LevelFail(string level, int playTime)
+        {
+            LogEvent("level_failed", "level", level, "time_played", playTime);
+        }
+
+        /// <summary>
+        /// Track level failed
+        /// </summary>
+        public static void LevelFail(string level, float playTime)
         {
             LogEvent("level_failed", "level", level, "time_played", playTime);
         }

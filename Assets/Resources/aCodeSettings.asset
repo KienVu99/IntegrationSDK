@@ -14,17 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDebugMode: 0
   turnOffAds: 0
-  applovinSdkKey: 
+  applovinSdkKey: stxrWPZ2EK7sN87Ze2Sf9GX5s5NNagxOhpCGoLxraHXPyMtI9ssAehw9IzeGymhM1lCQ7Av0xznOszTUHcWBMb
   directedForChildren: 0
   autoShowBanner: 1
   bannerPosition: 0
   intervalShowAds: 30
-  admobAppID: 
+  admobAppID: ca-app-pub-5650242957193897~6721956058
   appOpenID: 
-  bannerID: 
+  bannerID: c683cd3f5ab74d5e
   bannerCollapsibleID: 
-  interstitialID: 
-  rewardedVideoID: 
+  interstitialID: 5bac3d4b6dfada46
+  rewardedVideoID: a2fa50a348c939a1
   admobIosAppID: 
   appOpenIosID: 
   bannerIosID: 
@@ -33,6 +33,6 @@ MonoBehaviour:
   rewardedVideoIosID: 
   testDeviceID: 
   appleStoreUrl: 
-  appsflyerDevKey: 
+  appsflyerDevKey: 6dg9UQUuNJbSqUHjBeaSUP
   appsflyerAppID: 
   remoteConfigs: []

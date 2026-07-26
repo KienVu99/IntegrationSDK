@@ -82,12 +82,23 @@ namespace aCode.Advertisers
 
         public bool IsInterstitialAvailable()
         {
-            return !string.IsNullOrEmpty(_interstitialAdUnitId) && DateTime.Now > _timeAdsCanShow && MaxSdk.IsInterstitialReady(_interstitialAdUnitId);
+            if (string.IsNullOrEmpty(_interstitialAdUnitId)) return false;
+            if (DateTime.Now <= _timeAdsCanShow) return false;
+#if UNITY_EDITOR
+            return true;
+#else
+            return MaxSdk.IsInterstitialReady(_interstitialAdUnitId);
+#endif
         }
 
         public bool IsRewardedVideoAvailable()
         {
-            return !string.IsNullOrEmpty(_rewardedAdUnitId) && MaxSdk.IsRewardedAdReady(_rewardedAdUnitId);
+            if (string.IsNullOrEmpty(_rewardedAdUnitId)) return false;
+#if UNITY_EDITOR
+            return true;
+#else
+            return MaxSdk.IsRewardedAdReady(_rewardedAdUnitId);
+#endif
         }
 
         public void ShowBanner(bool collapsible = false)
