@@ -28,7 +28,7 @@ Hãy thực hiện quét toàn bộ dự án và tự động refactor tracking 
    - Kiểm tra file `Assets/aCode/aCode.asmdef`, thêm tham chiếu AppsFlyer (`GUID:2a37df438292d4903b4e5159c5de3bf9`) nếu chưa có.
    - Cập nhật file `Assets/Plugins/Android/gradleTemplate.properties`, bổ sung:
      `android.jetifier.ignorelist=af-android-sdk,appsflyer`
-     `android.suppressUnsupportedCompileSdk=36`
+     `android.suppressUnsupportedCompileSdk=36,34,35`
    - Cập nhật file `Assets/Plugins/Android/proguard-user.txt`, bổ sung:
      `-keep class com.appsflyer.** { *; }`
      `-dontwarn com.appsflyer.**`
