@@ -18,13 +18,13 @@ namespace aCode.Editor.Data
 	{
 		public static readonly List<PackageInfo> BasePackages = new()
 		{
-			new PackageInfo("com.unity.ads.ios-support"),
-			new PackageInfo("com.google.external-dependency-manager"),
+			new PackageInfo("com.unity.ads.ios-support", "1.2.0"),
+			new PackageInfo("com.google.external-dependency-manager", "1.2.188"),
 		};
 		
 		public static readonly List<PackageInfo> AdmobPackages = new()
 		{
-			new PackageInfo("com.google.ads.mobile"),
+			new PackageInfo("com.google.ads.mobile", "9.2.0"),
 			new PackageInfo("com.google.ads.mobile.mediation.unity")
 		};
 		
@@ -42,42 +42,36 @@ namespace aCode.Editor.Data
 
 		public static readonly List<PackageInfo> ApplovinPackages = new()
 		{
-			new PackageInfo("com.applovin.mediation.ads"),
+			new PackageInfo("com.applovin.mediation.ads", "8.6.4"),
 			// Unity Ads
-			new PackageInfo("com.applovin.mediation.adapters.unityads.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.unityads.android"),
+			new PackageInfo("com.applovin.mediation.adapters.unityads.ios", "4190001.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.unityads.android", "4190001.0.0"),
 			
 			// IronSource
-			new PackageInfo("com.applovin.mediation.adapters.ironsource.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.ironsource.android"),
+			new PackageInfo("com.applovin.mediation.adapters.ironsource.ios", "905000000.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.ironsource.android", "905000000.0.0"),
 			
 			// Fix Google Mobile Ads
-			// new PackageInfo("com.applovin.mediation.adapters.google.android", "24050001.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.google.android"),
-			// new PackageInfo("com.applovin.mediation.adapters.googleadmanager.android", "24050000.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.googleadmanager.android"),
-			new PackageInfo("com.applovin.mediation.adapters.google.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.googleadmanager.ios"),
+			new PackageInfo("com.applovin.mediation.adapters.google.android", "25040000.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.googleadmanager.android", "25040000.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.google.ios", "13070000.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.googleadmanager.ios", "13070000.0.0"),
 			
 			// Liftoff
-			new PackageInfo("com.applovin.mediation.adapters.vungle.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.vungle.android"),
+			new PackageInfo("com.applovin.mediation.adapters.vungle.ios", "7070500.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.vungle.android", "7070700.0.0"),
 			
 			// Chartboost
-			new PackageInfo("com.applovin.mediation.adapters.chartboost.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.chartboost.android"),
+			new PackageInfo("com.applovin.mediation.adapters.chartboost.ios", "9130000.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.chartboost.android", "9130000.0.0"),
 			
 			// InMobi
-			new PackageInfo("com.applovin.mediation.adapters.inmobi.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.inmobi.android"),
+			new PackageInfo("com.applovin.mediation.adapters.inmobi.ios", "11040000.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.inmobi.android", "11040000.0.0"),
 			
 			// DT Exchange
-			new PackageInfo("com.applovin.mediation.adapters.fyber.ios"),
-			new PackageInfo("com.applovin.mediation.adapters.fyber.android"),
-			
-			// Mintegral
-			// new PackageInfo("com.applovin.mediation.adapters.mintegral.ios"),
-			// new PackageInfo("com.applovin.mediation.adapters.mintegral.android"),
+			new PackageInfo("com.applovin.mediation.adapters.fyber.ios", "8040800.0.0"),
+			new PackageInfo("com.applovin.mediation.adapters.fyber.android", "8040600.0.0"),
 		};
 	}
 }
