@@ -432,15 +432,22 @@ namespace aCode
         /// <summary>
         /// Show interstitial ad
         /// </summary>
-        public static void ShowInterstitial(string location, UnityAction showSuccessCallback = null)
+        public static void ShowInterstitial(string placement, UnityAction showSuccessCallback = null)
         {
             if (AdsDisabled)
             {
                 showSuccessCallback?.Invoke();
                 return;
             }
-            AdsManager.Instance?.ShowInterstitial(showSuccessCallback);
-            LogEvent("ShowInterstitial", "location", location);
+            AdsManager.Instance?.ShowInterstitial(placement, showSuccessCallback);
+        }
+
+        /// <summary>
+        /// Show interstitial ad with default placement
+        /// </summary>
+        public static void ShowInterstitial(UnityAction showSuccessCallback)
+        {
+            ShowInterstitial("default", showSuccessCallback);
         }
         
         #endregion
@@ -462,14 +469,31 @@ namespace aCode
         /// <summary>
         /// Show rewarded video ad
         /// </summary>
-        public static void ShowRewarded(UnityAction onRewardCallback)
+        public static void ShowRewarded(string placement, UnityAction onRewardCallback)
         {
             if (AdsDisabled)
             {
                 onRewardCallback?.Invoke();
                 return;
             }
-            AdsManager.Instance?.ShowRewardedVideo(onRewardCallback);
+            AdsManager.Instance?.ShowRewardedVideo(placement, onRewardCallback);
+        }
+
+        /// <summary>
+        /// Show rewarded video ad with default placement
+        /// </summary>
+        public static void ShowRewarded(UnityAction onRewardCallback)
+        {
+            ShowRewarded("default", onRewardCallback);
+        }
+
+        /// <summary>
+        /// Show App Open ad
+        /// </summary>
+        public static void ShowAppOpen(string placement = "default")
+        {
+            if (AdsDisabled) return;
+            AdsManager.Instance?.ShowAppOpen(placement);
         }
         
         /// <summary>
@@ -556,9 +580,7 @@ namespace aCode
         /// </summary>
         public static void LevelStart(string level)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Started", "level", level);
-#endif
+            LogEvent("level_start", "level", level);
         }
         
         /// <summary>
@@ -566,9 +588,7 @@ namespace aCode
         /// </summary>
         public static void LevelStart(int level)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Started", "level", level.ToString());
-#endif
+            LogEvent("level_start", "level", level.ToString());
         }
         
         /// <summary>
@@ -576,9 +596,7 @@ namespace aCode
         /// </summary>
         public static void LevelReplay(string level)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Replay", "level", level);
-#endif
+            LogEvent("level_replay", "level", level);
         }
         
         /// <summary>
@@ -586,9 +604,7 @@ namespace aCode
         /// </summary>
         public static void LevelReplay(int level)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Replay", "level", level.ToString());
-#endif
+            LogEvent("level_replay", "level", level.ToString());
         }
         
         /// <summary>
@@ -596,9 +612,7 @@ namespace aCode
         /// </summary>
         public static void LevelComplete(string level, string playTime)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Completed", "level", level, "playTime", playTime);
-#endif
+            LogEvent("level_passed", "level", level, "time_played", playTime);
         }
         
         /// <summary>
@@ -606,9 +620,15 @@ namespace aCode
         /// </summary>
         public static void LevelComplete(int level, int playTime)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Completed", "level", level.ToString(), "playTime", playTime.ToString());
-#endif
+            LogEvent("level_passed", "level", level.ToString(), "time_played", playTime);
+        }
+
+        /// <summary>
+        /// Track level completed
+        /// </summary>
+        public static void LevelComplete(int level, float playTime)
+        {
+            LogEvent("level_passed", "level", level.ToString(), "time_played", playTime);
         }
         
         /// <summary>
@@ -616,9 +636,7 @@ namespace aCode
         /// </summary>
         public static void LevelFail(string level, string playTime)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Failed", "level", level, "playTime", playTime);
-#endif
+            LogEvent("level_failed", "level", level, "time_played", playTime);
         }
         
         /// <summary>
@@ -626,9 +644,7 @@ namespace aCode
         /// </summary>
         public static void LevelFail(int level, int playTime)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Failed", "level", level.ToString(), "playTime", playTime.ToString());
-#endif
+            LogEvent("level_failed", "level", level.ToString(), "time_played", playTime);
         }
         
         /// <summary>
@@ -636,9 +652,7 @@ namespace aCode
         /// </summary>
         public static void LevelFail(int level, float playTime)
         {
-#if USING_FIREBASE_ANALYTICS
-            FirebaseManager.Instance?.TrackEvent("Level_Failed", "level", level.ToString(), "playTime", playTime);
-#endif
+            LogEvent("level_failed", "level", level.ToString(), "time_played", playTime);
         }
         
         #endregion

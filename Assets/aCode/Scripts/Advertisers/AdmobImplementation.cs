@@ -24,6 +24,9 @@ namespace aCode.Advertisers
         
         private TimeSpan _intervalShowAds;
         private DateTime _timeAdsCanShow;
+        private string _currentInterstitialPlacement = "default";
+        private string _currentRewardedPlacement = "default";
+        private string _currentAppOpenPlacement = "default";
         
         private AppOpenAd _appOpen;
         private DateTime _appOpenExpireTime;
@@ -377,10 +380,12 @@ namespace aCode.Advertisers
             return !string.IsNullOrEmpty(_interstitialAdUnitId) && DateTime.Now > _timeAdsCanShow && _interstitialAd != null && _interstitialAd.CanShowAd();
         }
         
-        public void ShowInterstitial(UnityAction callback)
+        public void ShowInterstitial(string placement, UnityAction callback)
         {
+            _currentInterstitialPlacement = string.IsNullOrEmpty(placement) ? "default" : placement;
             if (IsInterstitialAvailable())
             {
+                GM.LogEvent("show_interstitial_ads", "placement", _currentInterstitialPlacement);
                 _onInterstitialClosedCallback = callback;
                 _interstitialAd.Show();
                 _timeAdsCanShow = DateTime.Now + _intervalShowAds;
@@ -390,6 +395,11 @@ namespace aCode.Advertisers
                 LogData("Interstitial ad cannot be shown.");
                 callback?.Invoke();
             }
+        }
+
+        public void ShowInterstitial(UnityAction callback)
+        {
+            ShowInterstitial("default", callback);
         }
 
         private void LoadInterstitial()
@@ -466,6 +476,7 @@ namespace aCode.Advertisers
         private void AdClicked()
         {
             LogData("Interstitial ad was clicked.");
+            GM.LogEvent("show_interstitial_ads_click", "placement", _currentInterstitialPlacement);
         }
         
         private void AdFullScreenOpened()
@@ -476,6 +487,7 @@ namespace aCode.Advertisers
         private void AdFullScreenClosed()
         {
             LogData("Interstitial ad full screen content closed.");
+            GM.LogEvent("show_interstitial_ads_suscces", "placement", _currentInterstitialPlacement);
             InterstitialClosed();
         }
 
@@ -494,10 +506,12 @@ namespace aCode.Advertisers
             return false;
         }
 
-        public void ShowAppOpen()
+        public void ShowAppOpen(string placement = "default")
         {
+            _currentAppOpenPlacement = string.IsNullOrEmpty(placement) ? "default" : placement;
             if (IsAppOpenAvailable())
             {
+                GM.LogEvent("show_aoa_ads", "placement", _currentAppOpenPlacement);
                 _appOpen.Show();
                 _timeAdsCanShow = DateTime.Now + _intervalShowAds;
             }
@@ -549,12 +563,14 @@ namespace aCode.Advertisers
         }
         private void AppOpenAdFullScreenOpened()
         {
-            LogData( "Open app ad full screen content opened.");
+            LogData("Open app ad full screen content opened.");
+            GM.LogEvent("show_aoa_ads_sucess", "placement", _currentAppOpenPlacement);
         }
 
         private void AppOpenAdClicked()
         {
-            LogData( "Open app ad was clicked.");
+            LogData("Open app ad was clicked.");
+            GM.LogEvent("show_aoa_ads_click", "placement", _currentAppOpenPlacement);
         }
 
         private void AppOpenImpressionRecorded()
@@ -606,10 +622,12 @@ namespace aCode.Advertisers
             return _rewardedVideo != null && _rewardedVideo.CanShowAd();
         }
         
-        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        public void ShowRewardedVideo(string placement, UnityAction rewardVideoCallBack)
         {
             if (IsRewardedVideoAvailable())
             {
+                _currentRewardedPlacement = string.IsNullOrEmpty(placement) ? "default" : placement;
+                GM.LogEvent("show_rewarded_ads", "placement", _currentRewardedPlacement);
                 _onRewardedVideoClosed = rewardVideoCallBack;
                 _rewardedVideoWatched = false;
                 _rewardedVideo.Show(RewardedVideoWatched);
@@ -620,10 +638,16 @@ namespace aCode.Advertisers
                 LogData( "Rewarded video cannot be shown.");
             }
         }
+
+        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        {
+            ShowRewardedVideo("default", rewardVideoCallBack);
+        }
         
         private void RewardedVideoWatched(Reward reward)
         {
             LogData($"Rewarded Video Watched -> Reward amount: {reward.Amount} Reward type: {reward.Type}");
+            GM.LogEvent("show_rewarded_ads_sucess", "placement", _currentRewardedPlacement);
             _rewardedVideoWatched = true;
         }
         
@@ -692,6 +716,7 @@ namespace aCode.Advertisers
         private void RewardedAdClicked()
         {
             LogData("Rewarded ad was clicked.");
+            GM.LogEvent("show_rewarded_ads_click", "placement", _currentRewardedPlacement);
         }
         
         private void RewardedFullScreenOpened()
@@ -763,14 +788,18 @@ namespace aCode.Advertisers
         {
 #if USING_FIREBASE_ANALYTICS
             Parameter[] ltvData = {
-                new (FirebaseAnalytics.ParameterAdSource, network),
-                new (FirebaseAnalytics.ParameterAdUnitName, adUnitId),
+                new (FirebaseAnalytics.ParameterAdPlatform, "Admob"),
+                new (FirebaseAnalytics.ParameterAdSource, network ?? "unknown"),
+                new (FirebaseAnalytics.ParameterAdUnitName, adUnitId ?? "unknown"),
+                new (FirebaseAnalytics.ParameterAdFormat, "unknown"),
                 new (FirebaseAnalytics.ParameterCurrency, adValue.CurrencyCode),
                 new (FirebaseAnalytics.ParameterValue, adValue.Value / 1000000f),
                 new ("value_micro", adValue.Value),
-                new ("ad_unit_id", adUnitId),
+                new ("ad_unit_id", adUnitId ?? "unknown"),
                 new ("precision", (int) adValue.Precision),
-                new ("network", network)
+                new ("placement", "default"),
+                new ("country_code", "unknown"),
+                new ("network", network ?? "unknown")
             };
             FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventAdImpression, ltvData);
 #endif
@@ -819,21 +848,31 @@ namespace aCode.Advertisers
             LogData("HideBanner called, but Ads SDK is not integrated.");
         }
         
-        public void ShowAppOpen()
+        public void ShowAppOpen(string placement = "default")
         {
             LogData("ShowAppOpen called, but Ads SDK is not integrated.");
         }
 
-        public void ShowInterstitial(UnityAction callback)
+        public void ShowInterstitial(string placement, UnityAction callback)
         {
             LogData("ShowInterstitial called, but Ads SDK is not integrated.");
             callback?.Invoke();
         }
+
+        public void ShowInterstitial(UnityAction callback)
+        {
+            ShowInterstitial("default", callback);
+        }
         
-        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        public void ShowRewardedVideo(string placement, UnityAction rewardVideoCallBack)
         {
             LogData("ShowRewardedVideo called, but Ads SDK is not integrated.");
             rewardVideoCallBack?.Invoke();
+        }
+
+        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        {
+            ShowRewardedVideo("default", rewardVideoCallBack);
         }
 
         public void OpenDebugWindow()

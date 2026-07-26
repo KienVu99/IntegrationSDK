@@ -1,0 +1,76 @@
+# Add project specific ProGuard rules here.
+-keep class com.unity3d.** { *; }
+-keep class com.unity.** { *; }
+-keep class com.google.unity.** { *; }
+-keepclassmembers class * implements android.os.Parcelable { public static final android.os.Parcelable$Creator *; }
+-keepnames class * implements android.os.Parcelable { public static final ** CREATOR; }
+-keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
+-keep class android.webkit.WebSettings
+-dontwarn android.webkit.WebSettings
+-dontwarn android.webkit.JavascriptInterface
+-keep class **$$Lambda$* { *; }
+-keepattributes *Annotation*, Signature, InnerClasses, EnclosingMethod, SourceFile, LineNumberTable, Exceptions, Deprecated, JavascriptInterface
+
+-keep class com.applovin.** { *; }
+-dontwarn com.applovin.**
+-keep class com.iab.omid.** { *; }
+-dontwarn com.iab.omid.**
+
+-keep class androidx.** { *; }
+-dontwarn androidx.**
+-keep class com.google.android.gms.** { *; }
+-dontwarn com.google.android.gms.**
+-keep class com.google.android.gms.ads.** { *; }
+-keep public class com.google.android.gms.ads.** { public *; }
+-keep class com.google.android.gms.common.api.** { *; }
+-keep class com.google.android.gms.common.api.internal.* { *; }
+-keep class com.google.android.gms.common.ConnectionResult { *; }
+-keep class com.google.android.gms.common.internal.safeparcel.SafeParcelable { *; }
+-keepnames @com.google.android.gms.common.annotation.KeepName class *
+-keepclassmembernames class * { @com.google.android.gms.common.annotation.KeepName *; }
+-keep class com.google.android.ump.** { *; }
+-keep class com.google.android.gms.appset.** { *; }
+-keep class com.google.android.gms.tasks.** { *; }
+
+-keep class com.ironsource.** { *; }
+-keep class com.ironsource.adapters.** { *; }
+-keep class com.ironsource.unity.androidbridge.** { *; }
+-dontwarn com.ironsource.**
+-dontwarn com.ironsource.adapters.**
+
+-keep class com.vungle.** { *; }
+-keep class com.vungle.warren.** { *; }
+-keep class com.liftoff.** { *; }
+-keep class com.liftoffmobile.** { *; }
+-dontwarn com.vungle.**
+-dontwarn com.liftoff.**
+-dontwarn com.liftoffmobile.**
+
+-keep class com.facebook.** { *; }
+-dontwarn com.facebook.**
+
+-keep class com.mbridge.** { *; }
+-dontwarn com.mbridge.**
+
+-keep class com.unity3d.ads.** { *; }
+-dontwarn com.unity3d.ads.**
+
+-keep class com.chartboost.** { *; }
+-dontwarn com.chartboost.**
+
+-keep class javax.inject.** { *; }
+-keep class dagger.** { *; }
+-keep class com.batch.** { *; }
+-dontwarn com.batch.**
+-keep class com.badlogic.** { *; }
+-keep class com.badlogic.gdx.physics.box2d** { *; }
+
+-keep class com.appsflyer.** { *; }
+-dontwarn com.appsflyer.**
+
+-assumenosideeffects class android.util.Log {
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** e(...);
+}

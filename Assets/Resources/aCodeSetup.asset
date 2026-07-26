@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9d19084534e40a49d127d580be8e65c, type: 3}
   m_Name: aCodeSetup
   m_EditorClassIdentifier: 
-  adNetwork: 0
+  adNetwork: 3
   activeFirebase: 0
   activeFirebaseMessaging: 0
   activeFirebaseRemoteConfig: 0
+  activeAppsflyer: 1

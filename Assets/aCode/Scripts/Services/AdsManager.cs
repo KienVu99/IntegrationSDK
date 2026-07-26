@@ -111,11 +111,11 @@ namespace aCode.Services
             InitializeAdvertiser();
         }
 
-        public void ShowInterstitial(UnityAction showSuccessCallback = null)
+        public void ShowInterstitial(string placement, UnityAction showSuccessCallback = null)
         {
             if (IsInitialized() && _adManager.IsInterstitialAvailable())
             {
-                _adManager.ShowInterstitial(showSuccessCallback);
+                _adManager.ShowInterstitial(placement, showSuccessCallback);
                 var countShowInter = GM.Counter("count_interstitial_ads_key");
                 if (ThresholdEvent.Contains(countShowInter))
                 {
@@ -128,8 +128,13 @@ namespace aCode.Services
                 showSuccessCallback?.Invoke();
             }
         }
+
+        public void ShowInterstitial(UnityAction showSuccessCallback)
+        {
+            ShowInterstitial("default", showSuccessCallback);
+        }
         
-        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        public void ShowRewardedVideo(string placement, UnityAction rewardVideoCallBack)
         {
             if (!IsInitialized())
             {
@@ -138,8 +143,8 @@ namespace aCode.Services
 
             if (_adManager.IsRewardedVideoAvailable())
             {
-                GM.Print(Tag, $"Rewarded video from Admob is available");
-                _adManager.ShowRewardedVideo(rewardVideoCallBack);
+                GM.Print(Tag, $"Rewarded video is available");
+                _adManager.ShowRewardedVideo(placement, rewardVideoCallBack);
                 var countShowReward = GM.Counter("count_reward_ads_key");
                 if (ThresholdEvent.Contains(countShowReward))
                 {
@@ -148,8 +153,13 @@ namespace aCode.Services
             }
             else
             {
-                GM.Print(Tag, $"Rewarded video from Admob is NOT available");
+                GM.Print(Tag, $"Rewarded video is NOT available");
             }
+        }
+
+        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        {
+            ShowRewardedVideo("default", rewardVideoCallBack);
         }
         
         public void ShowBanner(bool collapsible = false)
@@ -195,13 +205,22 @@ namespace aCode.Services
             }
         }
         
+        public void ShowAppOpen(string placement = "default")
+        {
+            if (!IsInitialized()) return;
+            if (_adManager.IsAppOpenAvailable())
+            {
+                _adManager.ShowAppOpen(placement);
+            }
+        }
+
         private void OnApplicationPause(bool pauseStatus)
         {
             if (!pauseStatus || GM.SessionTime() < 25)  return;
             if (IsInitialized() && _adManager.IsAppOpenAvailable())
             {
                 GM.Print(Tag, $"Show App Open Ads on application pause");
-                _adManager.ShowAppOpen();
+                _adManager.ShowAppOpen("resume_pause");
             }
             else
             {

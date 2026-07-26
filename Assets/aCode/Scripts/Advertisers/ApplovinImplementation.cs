@@ -28,6 +28,9 @@ namespace aCode.Advertisers
         
         private TimeSpan _intervalShowAds;
         private DateTime _timeAdsCanShow;
+        private string _currentInterstitialPlacement = "default";
+        private string _currentRewardedPlacement = "default";
+        private string _currentAppOpenPlacement = "default";
 
         public void InitializeAds(UnityAction initializedAds)
         {
@@ -99,10 +102,12 @@ namespace aCode.Advertisers
             MaxSdk.HideBanner(_bannerAdUnitId);
         }
         
-        public void ShowInterstitial(UnityAction callback)
+        public void ShowInterstitial(string placement, UnityAction callback)
         {
+            _currentInterstitialPlacement = string.IsNullOrEmpty(placement) ? "default" : placement;
             if (IsInterstitialAvailable())
             {
+                GM.LogEvent("show_interstitial_ads", "placement", _currentInterstitialPlacement);
                 _onInterstitialClosedCallback = callback;
                 _timeAdsCanShow = DateTime.Now + _intervalShowAds;
                 MaxSdk.ShowInterstitial(_interstitialAdUnitId);
@@ -112,13 +117,25 @@ namespace aCode.Advertisers
                 callback?.Invoke();
             }
         }
-        
-        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+
+        public void ShowInterstitial(UnityAction callback)
         {
-            if(!IsRewardedVideoAvailable()) return;
+            ShowInterstitial("default", callback);
+        }
+        
+        public void ShowRewardedVideo(string placement, UnityAction rewardVideoCallBack)
+        {
+            if (!IsRewardedVideoAvailable()) return;
+            _currentRewardedPlacement = string.IsNullOrEmpty(placement) ? "default" : placement;
+            GM.LogEvent("show_rewarded_ads", "placement", _currentRewardedPlacement);
             _timeAdsCanShow = DateTime.Now + _intervalShowAds;
             _onRewardVideoCallBack = rewardVideoCallBack;
             MaxSdk.ShowRewardedAd(_rewardedAdUnitId);
+        }
+
+        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        {
+            ShowRewardedVideo("default", rewardVideoCallBack);
         }
         
         public bool IsAppOpenAvailable()
@@ -126,9 +143,11 @@ namespace aCode.Advertisers
             return !string.IsNullOrEmpty(_appOpenAdUnitId) && DateTime.Now > _timeAdsCanShow && MaxSdk.IsAppOpenAdReady(_appOpenAdUnitId);
         }
         
-        public void ShowAppOpen()
+        public void ShowAppOpen(string placement = "default")
         {
-            if(!IsAppOpenAvailable()) return;
+            if (!IsAppOpenAvailable()) return;
+            _currentAppOpenPlacement = string.IsNullOrEmpty(placement) ? "default" : placement;
+            GM.LogEvent("show_aoa_ads", "placement", _currentAppOpenPlacement);
             MaxSdk.ShowAppOpenAd(_appOpenAdUnitId);
             _timeAdsCanShow = DateTime.Now + TimeSpan.FromSeconds(25);
         }
@@ -143,6 +162,7 @@ namespace aCode.Advertisers
             MaxSdkCallbacks.Interstitial.OnAdLoadedEvent += OnInterstitialLoadedEvent;
             MaxSdkCallbacks.Interstitial.OnAdLoadFailedEvent += OnInterstitialFailedEvent;
             MaxSdkCallbacks.Interstitial.OnAdDisplayFailedEvent += InterstitialFailedToDisplayEvent;
+            MaxSdkCallbacks.Interstitial.OnAdClickedEvent += OnInterstitialClickedEvent;
             MaxSdkCallbacks.Interstitial.OnAdHiddenEvent += OnInterstitialDismissedEvent;
             MaxSdkCallbacks.Interstitial.OnAdRevenuePaidEvent += SendAdPaidEvent;
             LoadInterstitial();
@@ -182,9 +202,16 @@ namespace aCode.Advertisers
             InterstitialClosed();
         }
 
+        private void OnInterstitialClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
+        {
+            LogData("Interstitial clicked");
+            GM.LogEvent("show_interstitial_ads_click", "placement", _currentInterstitialPlacement);
+        }
+
         private void OnInterstitialDismissedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             LogData("Interstitial dismissed");
+            GM.LogEvent("show_interstitial_ads_suscces", "placement", _currentInterstitialPlacement);
             _timeAdsCanShow = DateTime.Now + _intervalShowAds;
             LoadInterstitial();
             InterstitialClosed();
@@ -237,6 +264,7 @@ namespace aCode.Advertisers
         private void OnRewardedAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             LogData("Rewarded ad clicked");
+            GM.LogEvent("show_rewarded_ads_click", "placement", _currentRewardedPlacement);
         }
 
         private void OnRewardedAdDismissedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -249,6 +277,7 @@ namespace aCode.Advertisers
 
         private void OnRewardedAdReceivedRewardEvent(string adUnitId, MaxSdk.Reward reward, MaxSdkBase.AdInfo adInfo)
         {
+            GM.LogEvent("show_rewarded_ads_sucess", "placement", _currentRewardedPlacement);
             _timeAdsCanShow = DateTime.Now + _intervalShowAds;
             var callback = _onRewardVideoCallBack;
             _onRewardVideoCallBack = null;
@@ -298,6 +327,7 @@ namespace aCode.Advertisers
         private void OnAppOpenDisplayedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             LogData( "App Open ad displayed");
+            GM.LogEvent("show_aoa_ads_sucess", "placement", _currentAppOpenPlacement);
             _appOpenRetryAttempt = 0;
         }
         
@@ -348,6 +378,7 @@ namespace aCode.Advertisers
         private void OnAppOpenClickEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             LogData("App Open ad clicked");
+            GM.LogEvent("show_aoa_ads_click", "placement", _currentAppOpenPlacement);
             _appOpenRetryAttempt = 0;
         }
         
@@ -464,21 +495,31 @@ namespace aCode.Advertisers
             LogData("HideBanner called, but Ads SDK is not integrated.");
         }
         
-        public void ShowAppOpen()
+        public void ShowAppOpen(string placement = "default")
         {
             LogData("ShowAppOpen called, but Ads SDK is not integrated.");
         }
 
-        public void ShowInterstitial(UnityAction callback)
+        public void ShowInterstitial(string placement, UnityAction callback)
         {
             LogData("ShowInterstitial called, but Ads SDK is not integrated.");
             callback?.Invoke();
         }
+
+        public void ShowInterstitial(UnityAction callback)
+        {
+            ShowInterstitial("default", callback);
+        }
         
-        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        public void ShowRewardedVideo(string placement, UnityAction rewardVideoCallBack)
         {
             LogData("ShowRewardedVideo called, but Ads SDK is not integrated.");
             rewardVideoCallBack?.Invoke();
+        }
+
+        public void ShowRewardedVideo(UnityAction rewardVideoCallBack)
+        {
+            ShowRewardedVideo("default", rewardVideoCallBack);
         }
 
         public void OpenDebugWindow()

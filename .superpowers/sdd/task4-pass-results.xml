@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="11" result="Passed" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.0707376">
+  <test-suite type="TestSuite" id="1021" name="IntegrationSDK" fullname="IntegrationSDK" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.070738" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+    <properties />
+    <test-suite type="Assembly" id="1036" name="IntegrationSDK.Core.Tests.Editor.dll" fullname="D:/Unity/2026/IntegrationSDK/IntegrationSDK/Library/ScriptAssemblies/IntegrationSDK.Core.Tests.Editor.dll" runstate="Runnable" testcasecount="11" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.055549" total="11" passed="11" failed="0" inconclusive="0" skipped="0" asserts="0">
+      <properties>
+        <property name="_PID" value="18004" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+      </properties>
+      <test-suite type="TestFixture" id="1022" name="AdManagerTests" fullname="AdManagerTests" classname="AdManagerTests" runstate="Runnable" testcasecount="4" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.034406" total="4" passed="4" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1026" name="RegisterProvider_ReplacesPreviousProvider" fullname="AdManagerTests.RegisterProvider_ReplacesPreviousProvider" methodname="RegisterProvider_ReplacesPreviousProvider" classname="AdManagerTests" runstate="Runnable" seed="1444504060" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.015064" asserts="0">
+          <properties />
+          <output><![CDATA[IntegrationSDK: replacing an already-registered ad provider.
+]]></output>
+        </test-case>
+        <test-case id="1025" name="ShowInterstitial_DoesNotThrow_WhenNoProviderRegistered" fullname="AdManagerTests.ShowInterstitial_DoesNotThrow_WhenNoProviderRegistered" methodname="ShowInterstitial_DoesNotThrow_WhenNoProviderRegistered" classname="AdManagerTests" runstate="Runnable" seed="1797858837" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.003093" asserts="0">
+          <properties />
+          <output><![CDATA[IntegrationSDK: no ad provider registered (add the Ads.AppLovin package).
+]]></output>
+        </test-case>
+        <test-case id="1023" name="ShowInterstitial_ForwardsToRegisteredProvider" fullname="AdManagerTests.ShowInterstitial_ForwardsToRegisteredProvider" methodname="ShowInterstitial_ForwardsToRegisteredProvider" classname="AdManagerTests" runstate="Runnable" seed="1190429091" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.000408" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1024" name="ShowRewarded_InvokesCallback_WhenProviderCallsIt" fullname="AdManagerTests.ShowRewarded_InvokesCallback_WhenProviderCallsIt" methodname="ShowRewarded_InvokesCallback_WhenProviderCallsIt" classname="AdManagerTests" runstate="Runnable" seed="404339152" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.000909" asserts="0">
+          <properties />
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1027" name="IntegrationSDKConfigTests" fullname="IntegrationSDKConfigTests" classname="IntegrationSDKConfigTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.002721" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1028" name="GetInterstitialAdUnitId_ReturnsAndroidValue_WhenNotIOS" fullname="IntegrationSDKConfigTests.GetInterstitialAdUnitId_ReturnsAndroidValue_WhenNotIOS" methodname="GetInterstitialAdUnitId_ReturnsAndroidValue_WhenNotIOS" classname="IntegrationSDKConfigTests" runstate="Runnable" seed="933668987" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.000661" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1029" name="GetInterstitialAdUnitId_ReturnsIOSValue_WhenIOS" fullname="IntegrationSDKConfigTests.GetInterstitialAdUnitId_ReturnsIOSValue_WhenIOS" methodname="GetInterstitialAdUnitId_ReturnsIOSValue_WhenIOS" classname="IntegrationSDKConfigTests" runstate="Runnable" seed="1614335992" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.000287" asserts="0">
+          <properties />
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1030" name="TrackingManagerTests" fullname="TrackingManagerTests" classname="TrackingManagerTests" runstate="Runnable" testcasecount="5" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.016246" total="5" passed="5" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1035" name="LogAdRevenue_FansOutToAllRegisteredBackends" fullname="TrackingManagerTests.LogAdRevenue_FansOutToAllRegisteredBackends" methodname="LogAdRevenue_FansOutToAllRegisteredBackends" classname="TrackingManagerTests" runstate="Runnable" seed="386762491" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.005110" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1033" name="LogEvent_DoesNotThrow_WhenABackendThrows" fullname="TrackingManagerTests.LogEvent_DoesNotThrow_WhenABackendThrows" methodname="LogEvent_DoesNotThrow_WhenABackendThrows" classname="TrackingManagerTests" runstate="Runnable" seed="2103973704" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.005862" asserts="0">
+          <properties />
+          <output><![CDATA[IntegrationSDK: tracking backend threw an exception: System.Exception: boom
+  at TrackingManagerTests+ThrowingBackend.LogEvent (System.String eventName, System.Collections.Generic.Dictionary`2[TKey,TValue] parameters) [0x00000] in .\Core\Tests\Editor\TrackingManagerTests.cs:21 
+  at IntegrationSDK.Core.TrackingManager+<>c__DisplayClass5_1.<LogEvent>b__0 () [0x00000] in .\Core\Runtime\Tracking\TrackingManager.cs:44 
+  at IntegrationSDK.Core.TrackingManager.SafeInvoke (System.Action action) [0x00002] in .\Core\Runtime\Tracking\TrackingManager.cs:87 
+]]></output>
+        </test-case>
+        <test-case id="1032" name="LogEvent_DoesNotThrow_WhenNoBackendsRegistered" fullname="TrackingManagerTests.LogEvent_DoesNotThrow_WhenNoBackendsRegistered" methodname="LogEvent_DoesNotThrow_WhenNoBackendsRegistered" classname="TrackingManagerTests" runstate="Runnable" seed="1090697534" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.001225" asserts="0">
+          <properties />
+          <output><![CDATA[IntegrationSDK: no tracking backend registered (add Tracking.AppsFlyer and/or Tracking.Firebase package).
+]]></output>
+        </test-case>
+        <test-case id="1031" name="LogEvent_FansOutToAllRegisteredBackends" fullname="TrackingManagerTests.LogEvent_FansOutToAllRegisteredBackends" methodname="LogEvent_FansOutToAllRegisteredBackends" classname="TrackingManagerTests" runstate="Runnable" seed="1257371150" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.000589" asserts="0">
+          <properties />
+        </test-case>
+        <test-case id="1034" name="UnregisterBackend_StopsReceivingEvents" fullname="TrackingManagerTests.UnregisterBackend_StopsReceivingEvents" methodname="UnregisterBackend_StopsReceivingEvents" classname="TrackingManagerTests" runstate="Runnable" seed="537681615" result="Passed" start-time="2026-07-23 17:37:24Z" end-time="2026-07-23 17:37:24Z" duration="0.001165" asserts="0">
+          <properties />
+          <output><![CDATA[IntegrationSDK: no tracking backend registered (add Tracking.AppsFlyer and/or Tracking.Firebase package).
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

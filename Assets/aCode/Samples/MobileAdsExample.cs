@@ -40,7 +40,7 @@ namespace aCode.Samples
     
         public void ShowRewardedVideo()
         {
-            GM.ShowRewarded(OnCompleteRewardVideoAction);
+            GM.ShowRewarded("get_jetpack_button_lv1", OnCompleteRewardVideoAction);
             message.text = "Show Rewarded Video Event";
         }
         

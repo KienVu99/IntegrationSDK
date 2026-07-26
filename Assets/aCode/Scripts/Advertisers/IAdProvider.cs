@@ -11,8 +11,10 @@ namespace aCode.Advertisers
         bool IsAppOpenAvailable();
         bool IsInterstitialAvailable();
         bool IsRewardedVideoAvailable();
-        void ShowAppOpen();
+        void ShowAppOpen(string placement = "default");
+        void ShowInterstitial(string placement = "default", UnityAction callback = null);
         void ShowInterstitial(UnityAction callback);
+        void ShowRewardedVideo(string placement = "default", UnityAction rewardVideoCallBack = null);
         void ShowRewardedVideo(UnityAction rewardVideoCallBack);
         void OpenDebugWindow();
         void LoadAdsOnResume();
