@@ -143,6 +143,42 @@ namespace aCode.Editor.Utils
             AssetDatabase.Refresh();
 
             Debug.Log("[aCode] AppLovinSettings updated.");
+            UpdateApplovinConsentFlowConfig();
+        }
+
+        public static void UpdateApplovinConsentFlowConfig()
+        {
+            try
+            {
+                var dir = Application.dataPath + "/MaxSdk/Resources";
+                if (!System.IO.Directory.Exists(dir))
+                {
+                    System.IO.Directory.CreateDirectory(dir);
+                }
+                var jsonPath = System.IO.Path.Combine(dir, "AppLovinInternalSettings.json");
+                var consentSettings = new AppLovinConsentSettings
+                {
+                    consentFlowEnabled = AppConfig.ConsentFlowEnabled,
+                    privacyPolicyUrl = AppConfig.PrivacyPolicyUrl ?? string.Empty,
+                    termsOfServiceUrl = AppConfig.TermsOfServiceUrl ?? string.Empty
+                };
+                var json = JsonUtility.ToJson(consentSettings, true);
+                System.IO.File.WriteAllText(jsonPath, json);
+                AssetDatabase.Refresh();
+                Debug.Log("[aCode] AppLovinInternalSettings.json updated.");
+            }
+            catch (Exception e)
+            {
+                Debug.LogError("[aCode] Failed to update AppLovinInternalSettings.json: " + e.Message);
+            }
+        }
+
+        [Serializable]
+        private class AppLovinConsentSettings
+        {
+            public bool consentFlowEnabled;
+            public string privacyPolicyUrl;
+            public string termsOfServiceUrl;
         }
         
         private static bool TrySetSo(SerializedObject so, string[] names, string value)

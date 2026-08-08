@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "588557627729",
+    "project_id": "jigdrop",
+    "storage_bucket": "jigdrop.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588557627729:android:4458910de79332a3a9e370",
+        "android_client_info": {
+          "package_name": "com.jigdrop.card.jigsaw.puzzle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW7XE4CYcwxNHDLWujtbzumfUHpcl7Y4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

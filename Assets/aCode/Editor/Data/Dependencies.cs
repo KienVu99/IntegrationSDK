@@ -51,27 +51,21 @@ namespace aCode.Editor.Data
 			new PackageInfo("com.applovin.mediation.adapters.ironsource.ios", "905000000.0.0"),
 			new PackageInfo("com.applovin.mediation.adapters.ironsource.android", "905000000.0.0"),
 			
-			// Fix Google Mobile Ads
+			// Fix Google Mobile Ads (Admob)
 			new PackageInfo("com.applovin.mediation.adapters.google.android", "25040000.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.googleadmanager.android", "25040000.0.0"),
 			new PackageInfo("com.applovin.mediation.adapters.google.ios", "13070000.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.googleadmanager.ios", "13070000.0.0"),
-			
-			// Liftoff
+
+			// Liftoff Monetize (Vungle)
 			new PackageInfo("com.applovin.mediation.adapters.vungle.ios", "7070500.0.0"),
 			new PackageInfo("com.applovin.mediation.adapters.vungle.android", "7070700.0.0"),
-			
-			// Chartboost
-			new PackageInfo("com.applovin.mediation.adapters.chartboost.ios", "9130000.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.chartboost.android", "9130000.0.0"),
-			
-			// InMobi
-			new PackageInfo("com.applovin.mediation.adapters.inmobi.ios", "11040000.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.inmobi.android", "11040000.0.0"),
-			
-			// DT Exchange
-			new PackageInfo("com.applovin.mediation.adapters.fyber.ios", "8040800.0.0"),
-			new PackageInfo("com.applovin.mediation.adapters.fyber.android", "8040600.0.0"),
+
+			// Facebook (Meta Audience Network)
+			new PackageInfo("com.applovin.mediation.adapters.facebook.ios"),
+			new PackageInfo("com.applovin.mediation.adapters.facebook.android"),
+
+			// Mintegral
+			new PackageInfo("com.applovin.mediation.adapters.mintegral.ios"),
+			new PackageInfo("com.applovin.mediation.adapters.mintegral.android"),
 		};
 	}
 }

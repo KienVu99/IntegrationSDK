@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: aCodeSetup
   m_EditorClassIdentifier: 
   adNetwork: 3
-  activeFirebase: 0
-  activeFirebaseMessaging: 0
-  activeFirebaseRemoteConfig: 0
+  activeFirebase: 1
+  activeFirebaseMessaging: 1
+  activeFirebaseRemoteConfig: 1
   activeAppsflyer: 1

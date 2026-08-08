@@ -35,6 +35,8 @@ namespace aCode.Editor.Data
 -keep class com.google.android.ump.** { *; }
 -keep class com.google.android.gms.appset.** { *; }
 -keep class com.google.android.gms.tasks.** { *; }
+-keep class com.google.firebase.** { *; }
+-dontwarn com.google.firebase.**
 
 -keep class com.ironsource.** { *; }
 -keep class com.ironsource.adapters.** { *; }

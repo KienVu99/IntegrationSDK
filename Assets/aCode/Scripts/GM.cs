@@ -1041,6 +1041,9 @@ namespace aCode
             Print("Appsflyer", $"Initializing Appsflyer. DevKey: {devKey}, AppID: {appId}");
             
             AppsFlyer.setIsDebug(_isDebugMode);
+#if UNITY_IOS && !UNITY_EDITOR
+            AppsFlyer.waitForATTUserAuthorizationWithTimeoutInterval(60);
+#endif
             AppsFlyer.initSDK(devKey, appId, this);
             AppsFlyer.startSDK();
         }

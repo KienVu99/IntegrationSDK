@@ -10,6 +10,9 @@ namespace aCode.Configs
 		public static bool IsDebugMode => S != null && S.IsDebugMode;
 		public static bool TurnOffAds => S != null && S.TurnOffAds;
 		public static string ApplovinSdkKey => S?.ApplovinSdkKey ?? string.Empty;
+		public static bool ConsentFlowEnabled => S == null || S.ConsentFlowEnabled;
+		public static string PrivacyPolicyUrl => S?.PrivacyPolicyUrl ?? string.Empty;
+		public static string TermsOfServiceUrl => S?.TermsOfServiceUrl ?? string.Empty;
 		public static string BannerID => S?.BannerID ?? string.Empty;
 		public static string BannerCollapsibleID => S?.BannerCollapsibleID ?? string.Empty;
 		public static string InterstitialID => S?.InterstitialID ?? string.Empty;

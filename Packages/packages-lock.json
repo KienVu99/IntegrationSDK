@@ -1,28 +1,14 @@
 {
   "dependencies": {
-    "com.applovin.mediation.adapters.chartboost.android": {
-      "version": "9130000.0.0",
+    "com.applovin.mediation.adapters.facebook.android": {
+      "version": "6220000.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
       "url": "https://unity.packages.applovin.com"
     },
-    "com.applovin.mediation.adapters.chartboost.ios": {
-      "version": "9130000.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unity.packages.applovin.com"
-    },
-    "com.applovin.mediation.adapters.fyber.android": {
-      "version": "8040600.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unity.packages.applovin.com"
-    },
-    "com.applovin.mediation.adapters.fyber.ios": {
-      "version": "8040800.0.0",
+    "com.applovin.mediation.adapters.facebook.ios": {
+      "version": "6220001.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -37,34 +23,6 @@
     },
     "com.applovin.mediation.adapters.google.ios": {
       "version": "13070000.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unity.packages.applovin.com"
-    },
-    "com.applovin.mediation.adapters.googleadmanager.android": {
-      "version": "25040000.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unity.packages.applovin.com"
-    },
-    "com.applovin.mediation.adapters.googleadmanager.ios": {
-      "version": "13070000.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unity.packages.applovin.com"
-    },
-    "com.applovin.mediation.adapters.inmobi.android": {
-      "version": "11040000.0.0",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://unity.packages.applovin.com"
-    },
-    "com.applovin.mediation.adapters.inmobi.ios": {
-      "version": "11040000.0.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -151,6 +109,51 @@
       "source": "registry",
       "dependencies": {},
       "url": "https://package.openupm.com"
+    },
+    "com.google.firebase.analytics": {
+      "version": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-analytics.git?path=/package#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "13.15.0"
+      },
+      "hash": "8c4450867e011f3c6cd178326e32271b4cc5ad1c"
+    },
+    "com.google.firebase.app": {
+      "version": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-app.git?path=/package#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.external-dependency-manager": "1.2.186"
+      },
+      "hash": "a123d089eb210b9d58109f023d1c7a5a5ee45c23"
+    },
+    "com.google.firebase.crashlytics": {
+      "version": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-crashlytics.git?path=/package#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "13.15.0"
+      },
+      "hash": "43493694a7e12c242a56d392b679f724dc41ed0e"
+    },
+    "com.google.firebase.messaging": {
+      "version": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-messaging.git?path=/package#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "13.15.0"
+      },
+      "hash": "cf5e3b8d4e632f286663d1bed8ad791e977c49ef"
+    },
+    "com.google.firebase.remote-config": {
+      "version": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-remote-config.git?path=/package#main",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.google.firebase.app": "13.15.0"
+      },
+      "hash": "4c91b3bdcb0f002bafa373351f975d67924fdd66"
     },
     "com.unity.2d.animation": {
       "version": "9.2.0",

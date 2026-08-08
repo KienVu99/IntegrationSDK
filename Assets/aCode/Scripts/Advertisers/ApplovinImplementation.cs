@@ -53,6 +53,7 @@ namespace aCode.Advertisers
             LogData("Start Initialization");
             MaxSdkCallbacks.OnSdkInitializedEvent += _ =>
             {
+                _initialized = true;
                 GM.Print(Tag,"MAX SDK Initialized");
                 if (!string.IsNullOrEmpty(_bannerAdUnitId))
                 {

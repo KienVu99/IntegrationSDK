@@ -48,18 +48,17 @@
         "com.applovin.mediation.adapters.ironsource.ios": "905000000.0.0",
         "com.applovin.mediation.adapters.ironsource.android": "905000000.0.0",
         "com.applovin.mediation.adapters.google.android": "25040000.0.0",
-        "com.applovin.mediation.adapters.googleadmanager.android": "25040000.0.0",
         "com.applovin.mediation.adapters.google.ios": "13070000.0.0",
-        "com.applovin.mediation.adapters.googleadmanager.ios": "13070000.0.0",
         "com.applovin.mediation.adapters.vungle.ios": "7070500.0.0",
         "com.applovin.mediation.adapters.vungle.android": "7070700.0.0",
-        "com.applovin.mediation.adapters.chartboost.ios": "9130000.0.0",
-        "com.applovin.mediation.adapters.chartboost.android": "9130000.0.0",
-        "com.applovin.mediation.adapters.inmobi.ios": "11040000.0.0",
-        "com.applovin.mediation.adapters.inmobi.android": "11040000.0.0",
-        "com.applovin.mediation.adapters.fyber.ios": "8040800.0.0",
-        "com.applovin.mediation.adapters.fyber.android": "8040600.0.0",
-        "com.appsflyer.unity": "6.17.1"
+        "com.appsflyer.unity": "6.17.1",
+        "com.google.firebase.app": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-app.git?path=/package#main",
+        "com.google.firebase.analytics": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-analytics.git?path=/package#main",
+        "com.google.firebase.crashlytics": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-crashlytics.git?path=/package#main",
+        "com.google.firebase.messaging": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-messaging.git?path=/package#main",
+        "com.google.firebase.remote-config": "git+https://coder:0067d515873e78000325192059b08ef213ec7c6c@git.h2c.us/upm/firebase-remote-config.git?path=/package#main",
+        "com.applovin.mediation.adapters.facebook.ios": "6220001.0.0",
+        "com.applovin.mediation.adapters.facebook.android": "6220000.0.0"
     },
     "testables": [
         "com.gemmob.integrationsdk.core"

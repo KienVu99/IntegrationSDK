@@ -190,6 +190,9 @@ namespace aCode.Editor
                 DrawBlock("App Config", () =>
                 {
                     PropertyField("applovinSdkKey", "Applovin SDK Key");
+                    PropertyField("consentFlowEnabled", "Consent Flow Enabled (GDPR/UMP)");
+                    PropertyField("privacyPolicyUrl", "Privacy Policy URL");
+                    PropertyField("termsOfServiceUrl", "Terms of Service URL (Optional)");
                     PropertyField("directedForChildren", "Directed For Children");
                     PropertyField("intervalShowAds", "Interval Show Ads");
                     PropertyField("autoShowBanner", "Auto Show Banner");

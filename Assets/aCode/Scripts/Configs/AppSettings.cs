@@ -32,6 +32,9 @@ namespace aCode.Configs
         [Header("Applovin Config")]
         // ReSharper disable once StringLiteralTypo
         [SerializeField] private string applovinSdkKey = "";
+        [SerializeField] private bool consentFlowEnabled = true;
+        [SerializeField] private string privacyPolicyUrl = "";
+        [SerializeField] private string termsOfServiceUrl = "";
         [SerializeField] private bool directedForChildren;
         [SerializeField] private bool autoShowBanner = true;
         [SerializeField] private BannerPosition bannerPosition = BannerPosition.Bottom;
@@ -67,6 +70,9 @@ namespace aCode.Configs
         public bool IsDebugMode => isDebugMode;
         public bool TurnOffAds => turnOffAds;
         public string ApplovinSdkKey => applovinSdkKey;
+        public bool ConsentFlowEnabled => consentFlowEnabled;
+        public string PrivacyPolicyUrl => privacyPolicyUrl;
+        public string TermsOfServiceUrl => termsOfServiceUrl;
         public string BannerID => bannerID;
         public string BannerCollapsibleID => bannerCollapsibleID;
         public string BannerIosID => bannerIosID;

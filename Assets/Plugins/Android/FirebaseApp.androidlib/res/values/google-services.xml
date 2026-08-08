@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
+  <string name="gcm_defaultSenderId" translatable="false">588557627729</string>
+  <string name="google_storage_bucket" translatable="false">jigdrop.firebasestorage.app</string>
+  <string name="project_id" translatable="false">jigdrop</string>
+  <string name="google_api_key" translatable="false">AIzaSyCW7XE4CYcwxNHDLWujtbzumfUHpcl7Y4A</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCW7XE4CYcwxNHDLWujtbzumfUHpcl7Y4A</string>
+  <string name="google_app_id" translatable="false">1:588557627729:android:4458910de79332a3a9e370</string>
+</resources>

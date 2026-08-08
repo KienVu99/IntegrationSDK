@@ -15,16 +15,19 @@ MonoBehaviour:
   isDebugMode: 0
   turnOffAds: 0
   applovinSdkKey: stxrWPZ2EK7sN87Ze2Sf9GX5s5NNagxOhpCGoLxraHXPyMtI9ssAehw9IzeGymhM1lCQ7Av0xznOszTUHcWBMb
+  consentFlowEnabled: 1
+  privacyPolicyUrl: 
+  termsOfServiceUrl: 
   directedForChildren: 0
   autoShowBanner: 1
   bannerPosition: 0
   intervalShowAds: 30
-  admobAppID: ca-app-pub-5650242957193897~6721956058
+  admobAppID: ca-app-pub-5650242957193897~5125810493
   appOpenID: 
-  bannerID: c683cd3f5ab74d5e
+  bannerID: fc6bd97cf1f83505
   bannerCollapsibleID: 
-  interstitialID: 5bac3d4b6dfada46
-  rewardedVideoID: a2fa50a348c939a1
+  interstitialID: b1c1372d5e8efbad
+  rewardedVideoID: 2522dbf4580fa8e6
   admobIosAppID: 
   appOpenIosID: 
   bannerIosID: 
