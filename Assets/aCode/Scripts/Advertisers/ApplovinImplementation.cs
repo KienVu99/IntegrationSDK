@@ -8,6 +8,9 @@ using aCode.Configs;
 #if USING_FIREBASE_ANALYTICS
 using Firebase.Analytics;
 #endif
+#if USING_APPSFLYER
+using AppsFlyerSDK;
+#endif
 
 namespace aCode.Advertisers
 {
@@ -105,12 +108,14 @@ namespace aCode.Advertisers
         public void ShowBanner(bool collapsible = false)
         {
             if(string.IsNullOrEmpty(_bannerAdUnitId)) return;
+            _isBannerShowing = true;
             MaxSdk.ShowBanner(_bannerAdUnitId);
         }
 
         public void HideBanner()
         {
             if(string.IsNullOrEmpty(_bannerAdUnitId)) return;
+            _isBannerShowing = false;
             MaxSdk.HideBanner(_bannerAdUnitId);
         }
         
@@ -312,11 +317,13 @@ namespace aCode.Advertisers
         private void OnBannerAdLoadedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
         {
             LogData("Banner ad loaded");
+            _isBannerShowing = true;
         }
 
         private void OnBannerAdFailedEvent(string adUnitId, MaxSdkBase.ErrorInfo errorInfo)
         {
             LogData("Banner ad failed to load with error code: " + errorInfo.Code);
+            _isBannerShowing = false;
         }
 
         private void OnBannerAdClickedEvent(string adUnitId, MaxSdkBase.AdInfo adInfo)
@@ -381,8 +388,6 @@ namespace aCode.Advertisers
         {
             LogData("App Open ad hidden");
             LoadAppOpenAd();
-            _onRewardVideoCallBack?.Invoke();
-            _onRewardVideoCallBack = null;
             _timeAdsCanShow = DateTime.Now + TimeSpan.FromSeconds(25);
             _appOpenRetryAttempt = 0;
         }
@@ -440,7 +445,22 @@ namespace aCode.Advertisers
 
             FirebaseAnalytics.LogEvent(FirebaseAnalytics.EventAdImpression, ltvData);
 #endif
-            LogData( $"[Firebase] ad_impression | Platform={adPlatform}, Source={adNetwork}, " + $"Format={adFormat}, Unit={adUnitIdentifier}, Revenue={revenue} {currency}, " + $"Country={countryCode}, Placement={adPlacement}, NetPlacement={networkPlacement}");
+#if USING_APPSFLYER
+            var afData = new System.Collections.Generic.Dictionary<string, string>
+            {
+                { "ad_platform", adPlatform },
+                { "ad_source", adNetwork ?? "unknown" },
+                { "ad_unit_name", adUnitIdentifier ?? adUnitName },
+                { "ad_format", adFormat ?? "unknown" },
+                { "currency", currency },
+                { "value", revenue.ToString(System.Globalization.CultureInfo.InvariantCulture) },
+                { "af_revenue", revenue.ToString(System.Globalization.CultureInfo.InvariantCulture) },
+                { "placement", adPlacement ?? "default" },
+                { "country_code", countryCode ?? "unknown" }
+            };
+            AppsFlyer.sendEvent("ad_impression", afData);
+#endif
+            LogData( $"[Firebase/AppsFlyer] ad_impression | Platform={adPlatform}, Source={adNetwork}, " + $"Format={adFormat}, Unit={adUnitIdentifier}, Revenue={revenue} {currency}, " + $"Country={countryCode}, Placement={adPlacement}, NetPlacement={networkPlacement}");
         }
 
         public void LoadAdsOnResume()
